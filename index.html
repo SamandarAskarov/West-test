@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>West Restaurant — Toshkentdagi eng mazali burgerlar</title>
+  <meta name="description" content="West Restaurant — Toshkentdagi eng mazali burgerlar. Mirabad ko'chasi 21/2. Buyurtma bering yoki bizga tashrif buyuring!" />
+  <meta name="keywords" content="west restaurant tashkent, burger toshkent, fast food tashkent, best burger uzbekistan" />
+  <meta property="og:title" content="West Restaurant Tashkent" />
+  <meta property="og:description" content="Toshkentdagi eng mazali burgerlar — West Restaurant" />
+  <meta property="og:type" content="restaurant" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { DEFAULT: '#C9A84C', light: '#E4C97E', dark: '#A07830' },
+            charcoal: '#0A0A0A',
+            offwhite: '#F5F2EC',
+          },
+          fontFamily: {
+            display: ['Bebas Neue', 'sans-serif'],
+            serif: ['Crimson Pro', 'Georgia', 'serif'],
+            body: ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E4C97E;
+      --charcoal: #0A0A0A;
+      --offwhite: #F5F2EC;
+    }
+
+    * { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #0A0A0A; color: #F5F2EC; overflow-x: hidden; }
+
+    /* Gold gradient text */
+    .gold-text { background: linear-gradient(135deg, #E4C97E 0%, #C9A84C 50%, #A07830 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* Grain overlay */
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.4; }
+
+    /* Navbar */
+    #navbar { transition: all 0.4s ease; }
+    #navbar.scrolled { background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,168,76,0.2); }
+
+    /* Hero */
+    .hero-bg { background: linear-gradient(135deg, #0A0A0A 0%, #1a1208 50%, #0A0A0A 100%); position: relative; overflow: hidden; }
+    .hero-bg::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 50%, rgba(201,168,76,0.12) 0%, transparent 70%); }
+    .hero-lines { position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px), repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px); }
+
+    /* Burger SVG image */
+    .burger-visual { filter: drop-shadow(0 30px 60px rgba(201,168,76,0.3)); }
+
+    /* Reveal animations */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* Gold line divider */
+    .gold-line { height: 1px; background: linear-gradient(90deg, transparent, #C9A84C, transparent); }
+
+    /* Menu card */
+    .menu-card { background: #111; border: 1px solid rgba(201,168,76,0.12); transition: all 0.4s ease; position: relative; overflow: hidden; }
+    .menu-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent); opacity: 0; transition: opacity 0.4s ease; }
+    .menu-card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.08); }
+    .menu-card:hover::before { opacity: 1; }
+    .menu-card .img-wrap { background: linear-gradient(135deg, #1a1208, #111); }
+
+    /* Badge */
+    .badge { background: linear-gradient(135deg, #C9A84C, #A07830); color: #0A0A0A; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+
+    /* Feature icon */
+    .feat-icon { width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05)); border: 1px solid rgba(201,168,76,0.25); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+    .feat-card:hover .feat-icon { background: linear-gradient(135deg, rgba(201,168,76,0.3), rgba(201,168,76,0.1)); border-color: rgba(201,168,76,0.6); transform: scale(1.1); }
+
+    /* Review card */
+    .review-card { background: linear-gradient(135deg, #111 0%, #0f0d08 100%); border: 1px solid rgba(201,168,76,0.12); transition: all 0.4s ease; }
+    .review-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-4px); }
+
+    /* CTA section */
+    .cta-section { background: linear-gradient(135deg, #1a1208 0%, #0f0d06 50%, #1a1208 100%); position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.1) 0%, transparent 70%); }
+
+    /* Buttons */
+    .btn-gold { background: linear-gradient(135deg, #E4C97E, #C9A84C, #A07830); color: #0A0A0A; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .btn-gold::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #C9A84C, #E4C97E); opacity: 0; transition: opacity 0.3s ease; }
+    .btn-gold:hover::before { opacity: 1; }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.4); }
+    .btn-gold span { position: relative; z-index: 1; }
+    .btn-outline { border: 1px solid rgba(201,168,76,0.5); color: #C9A84C; background: transparent; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s ease; }
+    .btn-outline:hover { border-color: #C9A84C; background: rgba(201,168,76,0.08); transform: translateY(-2px); }
+
+    /* Lang switcher */
+    .lang-btn { background: transparent; border: none; color: rgba(245,242,236,0.5); font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; padding: 4px 8px; transition: color 0.2s; }
+    .lang-btn.active { color: #C9A84C; font-weight: 600; }
+    .lang-btn:hover { color: #E4C97E; }
+    .lang-sep { color: rgba(245,242,236,0.2); font-size: 0.7rem; }
+
+    /* Map */
+    .map-wrap { border: 1px solid rgba(201,168,76,0.2); border-radius: 16px; overflow: hidden; }
+
+    /* Stars */
+    .star { color: #C9A84C; font-size: 1rem; }
+
+    /* Section label */
+    .section-label { color: #C9A84C; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+
+    /* Floating number */
+    .float-num { font-family: 'Bebas Neue', sans-serif; font-size: 8rem; color: rgba(201,168,76,0.04); line-height: 1; position: absolute; pointer-events: none; user-select: none; }
+
+    /* Scroll indicator */
+    .scroll-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A84C; animation: scrollBounce 1.5s ease-in-out infinite; }
+    @keyframes scrollBounce { 0%,100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(8px); opacity: 0.4; } }
+
+    /* Nav links */
+    .nav-link { color: rgba(245,242,236,0.7); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: color 0.2s; position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: #C9A84C; transition: width 0.3s ease; }
+    .nav-link:hover { color: #C9A84C; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* Social icon */
+    .social-icon { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.25); display: flex; align-items: center; justify-content: center; color: rgba(245,242,236,0.6); transition: all 0.3s ease; }
+    .social-icon:hover { border-color: #C9A84C; color: #C9A84C; background: rgba(201,168,76,0.08); transform: translateY(-3px); }
+
+    /* About image placeholder */
+    .about-visual { background: linear-gradient(135deg, #1a1208 0%, #111 100%); border: 1px solid rgba(201,168,76,0.15); border-radius: 20px; overflow: hidden; }
+
+    /* Stagger delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+    .delay-7 { transition-delay: 0.7s; }
+    .delay-8 { transition-delay: 0.8s; }
+
+    /* Price tag */
+    .price { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; }
+
+    /* Ticker */
+    .ticker-wrap { overflow: hidden; white-space: nowrap; }
+    .ticker { display: inline-block; animation: ticker 30s linear infinite; }
+    .ticker:hover { animation-play-state: paused; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 transition-all duration-500">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-gold rounded-lg flex items-center justify-center">
+        <span class="font-display text-charcoal text-xl leading-none">W</span>
+      </div>
+      <div>
+        <span class="font-display text-offwhite text-2xl tracking-wider leading-none block">WEST</span>
+        <span class="text-gold text-xs tracking-widest uppercase leading-none" style="font-size:0.55rem">Restaurant</span>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#about" class="nav-link" data-uz="Haqimizda" data-ru="О нас" data-en="About">Haqimizda</a>
+      <a href="#menu" class="nav-link" data-uz="Menyu" data-ru="Меню" data-en="Menu">Menyu</a>
+      <a href="#reviews" class="nav-link" data-uz="Sharhlar" data-ru="Отзывы" data-en="Reviews">Sharhlar</a>
+      <a href="#contact" class="nav-link" data-uz="Aloqa" data-ru="Контакты" data-en="Contact">Aloqa</a>
+    </div>
+
+    <!-- Right: lang + CTA -->
+    <div class="hidden md:flex items-center gap-6">
+      <!-- Language switcher -->
+      <div class="flex items-center gap-1">
+        <button class="lang-btn active" onclick="setLang('uz')">UZ</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" onclick="setLang('ru')">RU</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="tel:+998938870000" class="btn-gold px-5 py-2.5 rounded-lg text-sm">
+        <span data-uz="Buyurtma" data-ru="Заказать" data-en="Order Now">Buyurtma</span>
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <div class="flex md:hidden items-center gap-4">
+      <div class="flex items-center gap-1">
+        <button class="lang-btn active text-xs" onclick="setLang('uz')">UZ</button>
+        <span class="lang-sep text-xs">|</span>
+        <button class="lang-btn text-xs" onclick="setLang('ru')">RU</button>
+        <span class="lang-sep text-xs">|</span>
+        <button class="lang-btn text-xs" onclick="setLang('en')">EN</button>
+      </div>
+      <button onclick="toggleMobile()" class="text-offwhite p-2">
+        <svg id="ham-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="flex-col gap-4 mt-4 pb-4 border-t border-gold/20 pt-4 px-2">
+    <a href="#about" class="nav-link block py-2" data-uz="Haqimizda" data-ru="О нас" data-en="About" onclick="toggleMobile()">Haqimizda</a>
+    <a href="#menu" class="nav-link block py-2" data-uz="Menyu" data-ru="Меню" data-en="Menu" onclick="toggleMobile()">Menyu</a>
+    <a href="#reviews" class="nav-link block py-2" data-uz="Sharhlar" data-ru="Отзывы" data-en="Reviews" onclick="toggleMobile()">Sharhlar</a>
+    <a href="#contact" class="nav-link block py-2" data-uz="Aloqa" data-ru="Контакты" data-en="Contact" onclick="toggleMobile()">Aloqa</a>
+    <a href="tel:+998938870000" class="btn-gold inline-block px-5 py-2.5 rounded-lg text-sm mt-2">
+      <span data-uz="Buyurtma berish" data-ru="Заказать" data-en="Order Now">Buyurtma berish</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ HERO -->
+<section class="hero-bg min-h-screen flex items-center relative overflow-hidden" id="home">
+  <div class="hero-lines"></div>
+
+  <!-- Decorative circles -->
+  <div class="absolute top-1/4 right-0 w-96 h-96 rounded-full" style="background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%); transform: translateX(30%);"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full" style="background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%); transform: translate(-30%, 30%);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-20 w-full grid md:grid-cols-2 gap-12 items-center">
+    <!-- Left content -->
+    <div>
+      <div class="flex items-center gap-3 mb-6 reveal">
+        <div class="h-px w-12 bg-gold/60"></div>
+        <span class="section-label">Toshkent, Uzbekistan</span>
+      </div>
+
+      <h1 class="font-display text-offwhite leading-none mb-6 reveal delay-1" style="font-size: clamp(3.5rem, 8vw, 7rem);">
+        <span class="block" data-uz="TOSHKENTDAGI" data-ru="ЛУЧШИЕ" data-en="THE BEST">TOSHKENTDAGI</span>
+        <span class="block gold-text" data-uz="ENG MAZALI" data-ru="БУРГЕРЫ В" data-en="BURGERS IN">ENG MAZALI</span>
+        <span class="block" data-uz="BURGERLAR" data-ru="ТАШКЕНТЕ" data-en="TASHKENT">BURGERLAR</span>
+      </h1>
+
+      <p class="font-serif text-offwhite/60 text-xl leading-relaxed mb-10 max-w-md reveal delay-2" 
+         data-uz="Yangi ingrediyentlar, noyob ta'm va issiq muhit — bularning barchasi West Restaurant'da siz uchun."
+         data-ru="Свежие ингредиенты, уникальный вкус и уютная атмосфера — всё это ждёт вас в West Restaurant."
+         data-en="Fresh ingredients, unique flavors, and a warm atmosphere — all waiting for you at West Restaurant.">
+        Yangi ingrediyentlar, noyob ta'm va issiq muhit — bularning barchasi West Restaurant'da siz uchun.
+      </p>
+
+      <div class="flex flex-wrap gap-4 reveal delay-3">
+        <a href="tel:+998938870000" class="btn-gold px-8 py-4 rounded-xl text-sm flex items-center gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="relative z-10"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          <span data-uz="Buyurtma berish" data-ru="Заказать" data-en="Order Now">Buyurtma berish</span>
+        </a>
+        <a href="https://maps.google.com/?q=Mirabad+Street+21/2+Tashkent" target="_blank" rel="noopener" class="btn-outline px-8 py-4 rounded-xl text-sm flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-uz="Yo'nalish olish" data-ru="Маршрут" data-en="Get Directions">Yo'nalish olish</span>
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="flex gap-10 mt-14 pt-10 border-t border-gold/15 reveal delay-4">
+        <div>
+          <div class="font-display text-gold text-4xl leading-none mb-1">4.7</div>
+          <div class="flex gap-0.5 mb-1">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="opacity:0.7">★</span>
+          </div>
+          <div class="text-offwhite/40 text-xs tracking-wide" data-uz="319 sharh" data-ru="319 отзывов" data-en="319 Reviews">319 sharh</div>
+        </div>
+        <div class="w-px bg-gold/15"></div>
+        <div>
+          <div class="font-display text-gold text-4xl leading-none mb-1">5+</div>
+          <div class="text-offwhite/40 text-xs tracking-wide mt-2" data-uz="Yil tajriba" data-ru="Лет опыта" data-en="Years of exp.">Yil tajriba</div>
+        </div>
+        <div class="w-px bg-gold/15"></div>
+        <div>
+          <div class="font-display text-gold text-4xl leading-none mb-1">30+</div>
+          <div class="text-offwhite/40 text-xs tracking-wide mt-2" data-uz="Menyu pozitsiyasi" data-ru="Позиций меню" data-en="Menu items">Menyu pozitsiyasi</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Burger Illustration -->
+    <div class="relative flex justify-center items-center reveal-right delay-2">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div style="width: 380px; height: 380px; background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%); border-radius: 50%;"></div>
+      </div>
+      <svg class="burger-visual w-full max-w-sm md:max-w-md relative z-10" viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Shadow -->
+        <ellipse cx="200" cy="360" rx="120" ry="14" fill="rgba(0,0,0,0.6)"/>
+        <!-- Bottom bun -->
+        <ellipse cx="200" cy="310" rx="130" ry="28" fill="#8B4513"/>
+        <ellipse cx="200" cy="290" rx="130" ry="22" fill="#A0522D"/>
+        <ellipse cx="200" cy="285" rx="130" ry="16" fill="#C47A2F"/>
+        <!-- Sesame seeds on bottom -->
+        <ellipse cx="160" cy="280" rx="8" ry="4" fill="#D4A574" transform="rotate(-15 160 280)"/>
+        <ellipse cx="200" cy="276" rx="8" ry="4" fill="#D4A574"/>
+        <ellipse cx="240" cy="280" rx="8" ry="4" fill="#D4A574" transform="rotate(15 240 280)"/>
+        <!-- Lettuce bottom -->
+        <path d="M70 268 Q90 255 120 262 Q140 250 170 260 Q190 248 210 258 Q230 248 260 258 Q280 252 310 262 Q330 255 330 268 Q310 280 70 280 Z" fill="#2D7A3A"/>
+        <path d="M80 268 Q100 256 130 263 Q150 252 180 261 Q200 250 220 260 Q240 250 265 260 Q285 253 315 263" stroke="#1A5C25" stroke-width="1.5" fill="none"/>
+        <!-- Tomato -->
+        <ellipse cx="200" cy="255" rx="120" ry="16" fill="#C0392B" opacity="0.9"/>
+        <ellipse cx="200" cy="248" rx="118" ry="14" fill="#E74C3C"/>
+        <!-- Tomato detail lines -->
+        <path d="M120 248 Q160 240 200 248 Q240 240 280 248" stroke="#C0392B" stroke-width="1" fill="none"/>
+        <!-- Cheese -->
+        <path d="M75 242 L90 230 L310 230 L325 242 Q280 252 200 250 Q120 252 75 242Z" fill="#F39C12"/>
+        <path d="M75 242 Q120 236 200 238 Q280 236 325 242" stroke="#E67E22" stroke-width="1" fill="none"/>
+        <!-- Melted cheese drips -->
+        <path d="M110 242 Q105 255 112 265" stroke="#F39C12" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M290 240 Q296 252 288 263" stroke="#F39C12" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <!-- Patty -->
+        <ellipse cx="200" cy="226" rx="125" ry="18" fill="#3D1C08"/>
+        <ellipse cx="200" cy="218" rx="122" ry="16" fill="#5C2E0E"/>
+        <ellipse cx="200" cy="213" rx="118" ry="14" fill="#6B3510"/>
+        <!-- Patty grill marks -->
+        <path d="M130 213 Q165 206 200 213" stroke="rgba(0,0,0,0.4)" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M140 220 Q175 213 210 220" stroke="rgba(0,0,0,0.3)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- Sauce -->
+        <path d="M85 200 Q120 190 160 196 Q200 188 240 196 Q280 188 315 200 Q290 210 200 210 Q110 210 85 200Z" fill="#E74C3C" opacity="0.85"/>
+        <!-- Onion rings -->
+        <ellipse cx="180" cy="192" rx="30" ry="8" fill="none" stroke="rgba(245,242,236,0.6)" stroke-width="5"/>
+        <ellipse cx="230" cy="188" rx="25" ry="7" fill="none" stroke="rgba(245,242,236,0.5)" stroke-width="4"/>
+        <!-- Top bun base -->
+        <ellipse cx="200" cy="180" rx="125" ry="20" fill="#A0522D"/>
+        <!-- Top bun dome -->
+        <path d="M75 178 Q80 110 200 95 Q320 110 325 178 Q280 168 200 165 Q120 168 75 178Z" fill="#C47A2F"/>
+        <path d="M80 175 Q85 112 200 98 Q315 112 320 175" stroke="#A0522D" stroke-width="1" fill="none"/>
+        <!-- Top bun highlight -->
+        <path d="M130 130 Q175 110 220 120" stroke="rgba(245,220,150,0.4)" stroke-width="8" stroke-linecap="round" fill="none"/>
+        <!-- Sesame seeds on top -->
+        <ellipse cx="170" cy="135" rx="10" ry="5" fill="#D4A574" transform="rotate(-20 170 135)"/>
+        <ellipse cx="210" cy="118" rx="10" ry="5" fill="#D4A574" transform="rotate(-5 210 118)"/>
+        <ellipse cx="248" cy="132" rx="9" ry="4.5" fill="#D4A574" transform="rotate(20 248 132)"/>
+        <ellipse cx="190" cy="150" rx="8" ry="4" fill="#D4A574" transform="rotate(-10 190 150)"/>
+        <ellipse cx="225" cy="148" rx="8" ry="4" fill="#D4A574" transform="rotate(15 225 148)"/>
+        <!-- Steam particles -->
+        <path d="M160 85 Q155 70 162 55 Q168 42 162 28" stroke="rgba(245,242,236,0.25)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M200 80 Q195 65 202 50 Q208 37 202 23" stroke="rgba(245,242,236,0.2)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M238 84 Q233 69 240 54 Q246 41 240 27" stroke="rgba(245,242,236,0.15)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- Gold sparkles -->
+        <circle cx="60" cy="180" r="3" fill="rgba(201,168,76,0.6)"/>
+        <circle cx="345" cy="200" r="2.5" fill="rgba(201,168,76,0.5)"/>
+        <circle cx="50" cy="140" r="2" fill="rgba(201,168,76,0.4)"/>
+        <circle cx="360" cy="150" r="2" fill="rgba(201,168,76,0.35)"/>
+        <circle cx="100" cy="90" r="1.5" fill="rgba(201,168,76,0.3)"/>
+        <circle cx="310" cy="85" r="1.5" fill="rgba(201,168,76,0.25)"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+    <div class="text-offwhite/40 text-xs tracking-widest uppercase" style="font-size:0.6rem" data-uz="Pastga aylantiring" data-ru="Прокрутите вниз" data-en="Scroll Down">Pastga aylantiring</div>
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ TICKER -->
+<div class="ticker-wrap bg-gold py-3 overflow-hidden">
+  <div class="ticker">
+    <span class="inline-flex items-center gap-8 mx-8 font-display text-charcoal text-lg tracking-wider">
+      <span>WEST RESTAURANT</span><span>✦</span>
+      <span>TOSHKENT</span><span>✦</span>
+      <span>BURGER</span><span>✦</span>
+      <span>HOT DOG</span><span>✦</span>
+      <span>FAST FOOD</span><span>✦</span>
+      <span>MIRABAD 21/2</span><span>✦</span>
+      <span>DELIVERY</span><span>✦</span>
+      <span>TAKEAWAY</span><span>✦</span>
+      <span>4.7 ★★★★★</span><span>✦</span>
+      <span>WEST RESTAURANT</span><span>✦</span>
+      <span>TOSHKENT</span><span>✦</span>
+      <span>BURGER</span><span>✦</span>
+      <span>HOT DOG</span><span>✦</span>
+      <span>FAST FOOD</span><span>✦</span>
+      <span>MIRABAD 21/2</span><span>✦</span>
+      <span>DELIVERY</span><span>✦</span>
+      <span>TAKEAWAY</span><span>✦</span>
+      <span>4.7 ★★★★★</span><span>✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ ABOUT -->
+<section id="about" class="py-28 px-6 md:px-12 relative overflow-hidden">
+  <div class="float-num right-0 top-0 -translate-y-8" style="right:-20px">01</div>
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <!-- Visual side -->
+    <div class="relative reveal-left">
+      <div class="about-visual aspect-square flex items-center justify-center relative" style="border-radius: 24px;">
+        <!-- Interior illustration -->
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full p-8">
+          <!-- Room background -->
+          <rect x="40" y="60" width="320" height="280" rx="4" fill="#111" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+          <!-- Floor -->
+          <rect x="40" y="280" width="320" height="60" rx="2" fill="#1a1208" opacity="0.8"/>
+          <!-- Floor tiles -->
+          <path d="M40 300 L360 300 M40 320 L360 320 M100 280 L100 340 M160 280 L160 340 M220 280 L220 340 M280 280 L280 340" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+          <!-- Back wall pattern -->
+          <path d="M40 60 L360 60 M40 120 L360 120 M40 180 L360 180 M40 240 L360 240" stroke="rgba(201,168,76,0.05)" stroke-width="0.5"/>
+          <!-- Window/light source -->
+          <rect x="140" y="80" width="120" height="90" rx="4" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+          <path d="M200 80 L200 170 M140 125 L260 125" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+          <!-- Window light beam -->
+          <path d="M140 170 L100 280 M260 170 L300 280" fill="rgba(201,168,76,0.03)" stroke="none"/>
+          <!-- Table left -->
+          <rect x="55" y="220" width="80" height="10" rx="3" fill="#2a1a0a"/>
+          <rect x="65" y="230" width="8" height="50" rx="2" fill="#2a1a0a"/>
+          <rect x="117" y="230" width="8" height="50" rx="2" fill="#2a1a0a"/>
+          <!-- Table right -->
+          <rect x="265" y="220" width="80" height="10" rx="3" fill="#2a1a0a"/>
+          <rect x="275" y="230" width="8" height="50" rx="2" fill="#2a1a0a"/>
+          <rect x="327" y="230" width="8" height="50" rx="2" fill="#2a1a0a"/>
+          <!-- Chairs -->
+          <rect x="58" y="200" width="35" height="25" rx="3" fill="#1a1208" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+          <rect x="97" y="200" width="35" height="25" rx="3" fill="#1a1208" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+          <rect x="268" y="200" width="35" height="25" rx="3" fill="#1a1208" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+          <rect x="307" y="200" width="35" height="25" rx="3" fill="#1a1208" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+          <!-- Burger on table left -->
+          <ellipse cx="95" cy="218" rx="18" ry="6" fill="#A0522D"/>
+          <path d="M77 215 Q95 208 113 215 Q95 200 77 215Z" fill="#C47A2F"/>
+          <rect x="77" y="215" width="36" height="4" fill="#6B3510"/>
+          <ellipse cx="95" cy="218" rx="18" ry="5" fill="#C47A2F" opacity="0.5"/>
+          <!-- Drink on right table -->
+          <rect x="300" y="200" width="16" height="22" rx="3" fill="#1a3a5c" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+          <rect x="303" y="197" width="10" height="4" rx="1" fill="rgba(201,168,76,0.5)"/>
+          <!-- Pendant lights -->
+          <circle cx="140" cy="75" r="12" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+          <circle cx="200" cy="72" r="14" fill="rgba(201,168,76,0.2)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+          <circle cx="260" cy="75" r="12" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+          <line x1="140" y1="60" x2="140" y2="63" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+          <line x1="200" y1="60" x2="200" y2="58" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+          <line x1="260" y1="60" x2="260" y2="63" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+          <!-- Logo on wall -->
+          <rect x="178" y="135" width="44" height="26" rx="4" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+          <text x="200" y="153" text-anchor="middle" font-family="serif" font-size="14" font-weight="bold" fill="rgba(201,168,76,0.9)">W</text>
+        </svg>
+        <!-- Overlay badge -->
+        <div class="absolute top-4 right-4 bg-gold/90 text-charcoal rounded-xl px-4 py-2 font-display text-2xl shadow-lg">
+          4.7 ★
+        </div>
+      </div>
+      <!-- Floating info card -->
+      <div class="absolute -bottom-6 -left-6 bg-charcoal border border-gold/25 rounded-2xl px-6 py-4 shadow-2xl hidden md:block">
+        <div class="text-xs text-offwhite/40 tracking-wide mb-1" data-uz="Manzil" data-ru="Адрес" data-en="Address">Manzil</div>
+        <div class="text-offwhite font-medium text-sm">Mirabad ko'chasi, 21/2</div>
+        <div class="text-gold/70 text-xs mt-1">Toshkent, Uzbekistan</div>
+      </div>
+    </div>
+
+    <!-- Text side -->
+    <div class="reveal-right">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="h-px w-8 bg-gold/60"></div>
+        <span class="section-label" data-uz="Biz haqimizda" data-ru="О нас" data-en="About us">Biz haqimizda</span>
+      </div>
+
+      <h2 class="font-display text-offwhite leading-none mb-6" style="font-size: clamp(2.5rem, 5vw, 4rem);"
+          data-uz="WEST — BU SHUNCHAKI RESTORAN EMAS" 
+          data-ru="WEST — ЭТО БОЛЬШЕ ЧЕМ РЕСТОРАН"
+          data-en="WEST — MORE THAN A RESTAURANT">
+        WEST — BU SHUNCHAKI RESTORAN EMAS
+      </h2>
+
+      <p class="font-serif text-offwhite/60 text-lg leading-relaxed mb-8"
+         data-uz="West Restaurant — Toshkentning yuragida joylashgan, mazali taomlar, qulay muhit va ajoyib xizmat bilan mashhur bo'lgan joy. Biz har bir mehmonimiz uchun unutilmas tajriba yaratamiz."
+         data-ru="West Restaurant — место в сердце Ташкента, известное вкусной едой, уютной атмосферой и отличным сервисом. Мы создаём незабываемые впечатления для каждого гостя."
+         data-en="West Restaurant — a spot in the heart of Tashkent, known for delicious food, cozy atmosphere, and excellent service. We create unforgettable experiences for every guest.">
+        West Restaurant — Toshkentning yuragida joylashgan, mazali taomlar, qulay muhit va ajoyib xizmat bilan mashhur bo'lgan joy. Biz har bir mehmonimiz uchun unutilmas tajriba yaratamiz.
+      </p>
+
+      <!-- Three pillars -->
+      <div class="space-y-5">
+        <div class="flex items-start gap-4 group">
+          <div class="feat-icon flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <div>
+            <h3 class="font-display text-offwhite text-xl tracking-wide mb-1" data-uz="MAZALI TAOMLAR" data-ru="ВКУСНАЯ ЕДА" data-en="DELICIOUS FOOD">MAZALI TAOMLAR</h3>
+            <p class="text-offwhite/50 text-sm font-serif leading-relaxed"
+               data-uz="Faqat yangi va sifatli ingrediyentlardan tayyorlangan taomlar."
+               data-ru="Блюда только из свежих и качественных ингредиентов."
+               data-en="Dishes made only from fresh and high-quality ingredients.">
+              Faqat yangi va sifatli ingrediyentlardan tayyorlangan taomlar.
+            </p>
+          </div>
+        </div>
+
+        <div class="gold-line"></div>
+
+        <div class="flex items-start gap-4 group">
+          <div class="feat-icon flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <h3 class="font-display text-offwhite text-xl tracking-wide mb-1" data-uz="QULAY MUHIT" data-ru="УЮТНАЯ АТМОСФЕРА" data-en="COZY ATMOSPHERE">QULAY MUHIT</h3>
+            <p class="text-offwhite/50 text-sm font-serif leading-relaxed"
+               data-uz="Oila va do'stlar bilan dam olish uchun ideal joy."
+               data-ru="Идеальное место для отдыха с семьёй и друзьями."
+               data-en="The ideal place to relax with family and friends.">
+              Oila va do'stlar bilan dam olish uchun ideal joy.
+            </p>
+          </div>
+        </div>
+
+        <div class="gold-line"></div>
+
+        <div class="flex items-start gap-4 group">
+          <div class="feat-icon flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <h3 class="font-display text-offwhite text-xl tracking-wide mb-1" data-uz="OILALAR UCHUN" data-ru="ДЛЯ ВСЕЙ СЕМЬИ" data-en="FAMILY FRIENDLY">OILALAR UCHUN</h3>
+            <p class="text-offwhite/50 text-sm font-serif leading-relaxed"
+               data-uz="Bolalar va kattalar uchun alohida menyu va qulay sharoit."
+               data-ru="Отдельное меню и комфортные условия для детей и взрослых."
+               data-en="Separate menu and comfortable conditions for children and adults.">
+              Bolalar va kattalar uchun alohida menyu va qulay sharoit.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ MENU -->
+<section id="menu" class="py-28 px-6 md:px-12 relative overflow-hidden" style="background: linear-gradient(180deg, #0A0A0A 0%, #0f0d08 50%, #0A0A0A 100%);">
+  <div class="float-num left-0" style="top: 40px; left: -20px; opacity:0.025">02</div>
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16 reveal">
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <div class="h-px w-16 bg-gold/40"></div>
+        <span class="section-label" data-uz="Bizning menyu" data-ru="Наше меню" data-en="Our menu">Bizning menyu</span>
+        <div class="h-px w-16 bg-gold/40"></div>
+      </div>
+      <h2 class="font-display text-offwhite leading-none" style="font-size: clamp(3rem, 6vw, 5.5rem);"
+          data-uz="MASHHUR TAOMLAR" data-ru="ПОПУЛЯРНЫЕ БЛЮДА" data-en="POPULAR DISHES">MASHHUR TAOMLAR</h2>
+      <p class="font-serif text-offwhite/50 text-lg mt-4 max-w-xl mx-auto"
+         data-uz="Har bir taomimiz yurak va mahorat bilan tayyorlanadi."
+         data-ru="Каждое блюдо готовится с душой и мастерством."
+         data-en="Every dish is prepared with heart and mastery.">
+        Har bir taomimiz yurak va mahorat bilan tayyorlanadi.
+      </p>
+    </div>
+
+    <!-- Menu grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Card: West Trio -->
+      <div class="menu-card rounded-2xl overflow-hidden reveal delay-1">
+        <div class="img-wrap h-48 flex items-center justify-center p-4 relative">
+          <svg viewBox="0 0 200 160" class="w-full h-full" fill="none">
+            <!-- Three mini burgers -->
+            <!-- Burger 1 -->
+            <ellipse cx="50" cy="130" rx="32" ry="8" fill="#A0522D"/>
+            <path d="M18 127 Q50 110 82 127 Q50 95 18 127Z" fill="#C47A2F"/>
+            <rect x="18" y="127" width="64" height="10" fill="#6B3510"/>
+            <ellipse cx="50" cy="122" rx="32" ry="7" fill="#C47A2F" opacity="0.6"/>
+            <ellipse cx="40" cy="118" rx="10" ry="3" fill="none" stroke="rgba(245,242,236,0.5)" stroke-width="2.5"/>
+            <!-- Burger 2 -->
+            <ellipse cx="100" cy="120" rx="34" ry="8.5" fill="#A0522D"/>
+            <path d="M66 117 Q100 98 134 117 Q100 83 66 117Z" fill="#C47A2F"/>
+            <rect x="66" y="117" width="68" height="11" fill="#6B3510"/>
+            <rect x="66" y="112" width="68" height="6" fill="#E74C3C" opacity="0.7"/>
+            <ellipse cx="100" cy="112" rx="34" ry="7.5" fill="#C47A2F" opacity="0.6"/>
+            <!-- Burger 3 -->
+            <ellipse cx="155" cy="130" rx="32" ry="8" fill="#A0522D"/>
+            <path d="M123 127 Q155 110 187 127 Q155 95 123 127Z" fill="#C47A2F"/>
+            <rect x="123" y="127" width="64" height="10" fill="#6B3510"/>
+            <ellipse cx="165" cy="123" rx="10" ry="3" fill="none" stroke="rgba(245,242,236,0.4)" stroke-width="2"/>
+            <!-- Gold sparkles -->
+            <circle cx="20" cy="85" r="2" fill="rgba(201,168,76,0.5)"/>
+            <circle cx="180" cy="80" r="2.5" fill="rgba(201,168,76,0.4)"/>
+            <circle cx="100" cy="70" r="1.5" fill="rgba(201,168,76,0.6)"/>
+          </svg>
+          <div class="absolute top-3 right-3 badge" data-uz="Yangi" data-ru="Новинка" data-en="New">Yangi</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display text-offwhite text-2xl tracking-wide mb-1">WEST TRIO</h3>
+          <p class="text-offwhite/40 text-xs font-serif mb-4" data-uz="3 ta kichik burger to'plami" data-ru="Набор из 3 мини-бургеров" data-en="Set of 3 mini burgers">3 ta kichik burger to'plami</p>
+          <div class="flex items-center justify-between">
+            <div class="price text-gold text-2xl">59 000 <span class="text-gold/60 text-sm">so'm</span></div>
+            <button class="w-8 h-8 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold/10 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Steak Burger -->
+      <div class="menu-card rounded-2xl overflow-hidden reveal delay-2">
+        <div class="img-wrap h-48 flex items-center justify-center p-4 relative">
+          <svg viewBox="0 0 200 180" class="w-full h-full" fill="none">
+            <ellipse cx="100" cy="168" rx="60" ry="10" fill="rgba(0,0,0,0.5)"/>
+            <ellipse cx="100" cy="158" rx="60" ry="13" fill="#8B4513"/>
+            <ellipse cx="100" cy="146" rx="60" ry="11" fill="#A0522D"/>
+            <ellipse cx="100" cy="140" rx="60" ry="9" fill="#C47A2F"/>
+            <!-- Lettuce -->
+            <path d="M40 126 Q60 115 80 122 Q100 112 120 122 Q140 114 160 126 Q140 136 100 134 Q60 136 40 126Z" fill="#2D7A3A"/>
+            <!-- Cheese layer -->
+            <path d="M38 114 L46 106 L154 106 L162 114 Q130 122 100 120 Q70 122 38 114Z" fill="#F39C12"/>
+            <!-- Thick steak patty -->
+            <ellipse cx="100" cy="100" rx="56" ry="12" fill="#3D1C08"/>
+            <ellipse cx="100" cy="92" rx="54" ry="10" fill="#5C2E0E"/>
+            <ellipse cx="100" cy="88" rx="50" ry="9" fill="#6B3510"/>
+            <!-- Grill marks -->
+            <path d="M65 88 Q85 80 105 88" stroke="rgba(0,0,0,0.5)" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M78 96 Q98 88 118 96" stroke="rgba(0,0,0,0.4)" stroke-width="3" stroke-linecap="round"/>
+            <!-- Sauce drip -->
+            <path d="M46 77 Q42 88 46 96" stroke="#E74C3C" stroke-width="5" stroke-linecap="round"/>
+            <!-- Top bun -->
+            <ellipse cx="100" cy="72" rx="58" ry="12" fill="#A0522D"/>
+            <path d="M42 70 Q46 30 100 18 Q154 30 158 70 Q130 62 100 60 Q70 62 42 70Z" fill="#C47A2F"/>
+            <path d="M65 40 Q90 28 115 35" stroke="rgba(245,220,150,0.4)" stroke-width="6" stroke-linecap="round"/>
+            <!-- Seeds -->
+            <ellipse cx="82" cy="42" rx="8" ry="4" fill="#D4A574" transform="rotate(-20 82 42)"/>
+            <ellipse cx="110" cy="30" rx="8" ry="4" fill="#D4A574" transform="rotate(5 110 30)"/>
+            <ellipse cx="130" cy="45" rx="7" ry="3.5" fill="#D4A574" transform="rotate(20 130 45)"/>
+            <!-- Steam -->
+            <path d="M85 12 Q80 2 87 -8" stroke="rgba(245,242,236,0.2)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M115 10 Q110 0 117 -10" stroke="rgba(245,242,236,0.15)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div class="absolute top-3 left-3 badge" style="background: linear-gradient(135deg, #E74C3C, #C0392B); color: white;" data-uz="Hit" data-ru="Хит" data-en="Best Seller">Hit</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display text-offwhite text-2xl tracking-wide mb-1">STEAK BURGER</h3>
+          <p class="text-offwhite/40 text-xs font-serif mb-4" data-uz="Go'shtli qalin burger, pishloq va sous" data-ru="Сочный бургер со стейком, сыром и соусом" data-en="Juicy steak burger with cheese and sauce">Go'shtli qalin burger, pishloq va sous</p>
+          <div class="flex items-center justify-between">
+            <div class="price text-gold text-2xl">42 000 <span class="text-gold/60 text-sm">so'm</span></div>
+            <button class="w-8 h-8 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold/10 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Cheddar Burger -->
+      <div class="menu-card rounded-2xl overflow-hidden reveal delay-3">
+        <div class="img-wrap h-48 flex items-center justify-center p-4 relative">
+          <svg viewBox="0 0 200 180" class="w-full h-full" fill="none">
+            <ellipse cx="100" cy="168" rx="58" ry="9" fill="rgba(0,0,0,0.5)"/>
+            <ellipse cx="100" cy="155" rx="58" ry="13" fill="#A0522D"/>
+            <ellipse cx="100" cy="143" rx="58" ry="11" fill="#C47A2F"/>
+            <!-- Double cheese -->
+            <path d="M42 128 L50 120 L150 120 L158 128 Q130 136 100 134 Q70 136 42 128Z" fill="#F39C12"/>
+            <path d="M42 128 Q70 122 100 124 Q130 122 158 128" stroke="#E67E22" stroke-width="1.5" fill="none"/>
+            <!-- Patty -->
+            <ellipse cx="100" cy="116" rx="56" ry="10" fill="#5C2E0E"/>
+            <ellipse cx="100" cy="108" rx="54" ry="9" fill="#6B3510"/>
+            <!-- Second cheese -->
+            <path d="M44 96 L52 88 L148 88 L156 96 Q130 104 100 102 Q70 104 44 96Z" fill="#F39C12" opacity="0.9"/>
+            <!-- Second patty -->
+            <ellipse cx="100" cy="84" rx="52" ry="9" fill="#5C2E0E"/>
+            <ellipse cx="100" cy="76" rx="50" ry="8" fill="#6B3510"/>
+            <!-- Cheese drips -->
+            <path d="M54 96 Q50 108 55 116" stroke="#F39C12" stroke-width="5" stroke-linecap="round"/>
+            <path d="M148 95 Q153 106 148 115" stroke="#F39C12" stroke-width="4.5" stroke-linecap="round"/>
+            <!-- Top bun -->
+            <ellipse cx="100" cy="64" rx="54" ry="11" fill="#A0522D"/>
+            <path d="M46 62 Q50 24 100 12 Q150 24 154 62 Q128 54 100 52 Q72 54 46 62Z" fill="#C47A2F"/>
+            <path d="M62 36 Q88 26 112 32" stroke="rgba(245,220,150,0.45)" stroke-width="6" stroke-linecap="round"/>
+            <ellipse cx="80" cy="35" rx="7" ry="3.5" fill="#D4A574" transform="rotate(-15 80 35)"/>
+            <ellipse cx="108" cy="24" rx="7" ry="3.5" fill="#D4A574"/>
+            <ellipse cx="125" cy="38" rx="6" ry="3" fill="#D4A574" transform="rotate(20 125 38)"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display text-offwhite text-2xl tracking-wide mb-1">CHEDDAR BURGER</h3>
+          <p class="text-offwhite/40 text-xs font-serif mb-4" data-uz="Ikki qatlam pishloq va ikki patty" data-ru="Двойной чеддер с двумя котлетами" data-en="Double cheddar with two patties">Ikki qatlam pishloq va ikki patty</p>
+          <div class="flex items-center justify-between">
+            <div class="price text-gold text-2xl">38 000 <span class="text-gold/60 text-sm">so'm</span></div>
+            <button class="w-8 h-8 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold/10 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Mix Burger 5pcs -->
+      <div class="menu-card rounded-2xl overflow-hidden reveal delay-4">
+        <div class="img-wrap h-48 flex items-center justify-center p-4 relative">
+          <svg viewBox="0 0 200 170" class="w-full h-full" fill="none">
+            <!-- 5 small burgers arranged in a W pattern -->
+            <g transform="translate(18,90) scale(0.52)">
+              <ellipse cx="50" cy="110" rx="46" ry="12" fill="#A0522D"/>
+              <path d="M4 106 Q50 85 96 106 Q50 68 4 106Z" fill="#C47A2F"/>
+              <rect x="4" y="106" width="92" height="16" fill="#6B3510"/>
+              <rect x="4" y="98" width="92" height="10" fill="#E74C3C" opacity="0.6"/>
+            </g>
+            <g transform="translate(64,70) scale(0.52)">
+              <ellipse cx="50" cy="110" rx="46" ry="12" fill="#A0522D"/>
+              <path d="M4 106 Q50 85 96 106 Q50 68 4 106Z" fill="#C47A2F"/>
+              <rect x="4" y="106" width="92" height="16" fill="#6B3510"/>
+              <rect x="4" y="98" width="92" height="10" fill="#F39C12" opacity="0.7"/>
+            </g>
+            <g transform="translate(110,80) scale(0.52)">
+              <ellipse cx="50" cy="110" rx="46" ry="12" fill="#A0522D"/>
+              <path d="M4 106 Q50 85 96 106 Q50 68 4 106Z" fill="#C47A2F"/>
+              <rect x="4" y="106" width="92" height="16" fill="#6B3510"/>
+            </g>
+            <g transform="translate(40,115) scale(0.48)">
+              <ellipse cx="50" cy="110" rx="46" ry="12" fill="#8B4513"/>
+              <path d="M4 106 Q50 85 96 106 Q50 68 4 106Z" fill="#A0522D"/>
+              <rect x="4" y="106" width="92" height="16" fill="#5C2E0E"/>
+            </g>
+            <g transform="translate(96,118) scale(0.48)">
+              <ellipse cx="50" cy="110" rx="46" ry="12" fill="#8B4513"/>
+              <path d="M4 106 Q50 85 96 106 Q50 68 4 106Z" fill="#A0522D"/>
+              <rect x="4" y="106" width="92" height="16" fill="#5C2E0E"/>
+            </g>
+            <!-- Gold x5 badge -->
+            <circle cx="168" cy="30" r="20" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+            <text x="168" y="36" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="16" fill="#C9A84C">x5</text>
+          </svg>
+          <div class="absolute top-3 left-3 badge" data-uz="To'plam" data-ru="Набор" data-en="Set">To'plam</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display text-offwhite text-2xl tracking-wide mb-1">MIX BURGER</h3>
+          <p class="text-offwhite/40 text-xs font-serif mb-4" data-uz="5 ta aralash burger to'plami" data-ru="5 разных мини-бургеров" data-en="5 mixed mini burgers">5 ta aralash burger to'plami</p>
+          <div class="flex items-center justify-between">
+            <div class="price text-gold text-2xl">89 000 <span class="text-gold/60 text-sm">so'm</span></div>
+            <button class="w-8 h-8 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold/10 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Western Hot Dog -->
+      <div class="menu-card rounded-2xl overflow-hidden reveal delay-1">
+        <div class="img-wrap h-48 flex items-center justify-center p-4 relative">
+          <svg viewBox="0 0 200 160" class="w-full h-full" fill="none">
+            <!-- Hotdog bun -->
+            <path d="M30 90 Q30 50 100 44 Q170 50 170 90 Q170 110 100 116 Q30 110 30 90Z" fill="#D4A062"/>
+            <path d="M30 90 Q30 65 100 58 Q170 65 170 90" stroke="#B8862E" stroke-width="2" fill="none"/>
+            <!-- Bun bottom -->
+            <ellipse cx="100" cy="110" rx="70" ry="14" fill="#C47A2F"/>
+            <!-- Sausage -->
+            <ellipse cx="100" cy="90" rx="65" ry="10" fill="#8B2500"/>
+            <ellipse cx="100" cy="85" rx="62" ry="9" fill="#A83200"/>
+            <!-- Sausage texture -->
+            <path d="M50 85 Q65 78 80 85 M100 82 Q115 75 130 82 M152 86 Q160 80 168 86" stroke="rgba(0,0,0,0.3)" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <!-- Mustard zigzag -->
+            <path d="M35 82 Q50 70 65 82 Q80 70 95 82 Q110 70 125 82 Q140 70 155 82 Q163 76 168 82" stroke="#F1C40F" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <!-- Ketchup zigzag -->
+            <path d="M38 92 Q53 80 68 92 Q83 80 98 92 Q113 80 128 92 Q143 80 158 92" stroke="#E74C3C" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+            <!-- Onions -->
+            <circle cx="60" cy="88" r="6" fill="none" stroke="rgba(245,242,236,0.5)" stroke-width="2.5"/>
+            <circle cx="140" cy="86" r="5" fill="none" stroke="rgba(245,242,236,0.4)" stroke-width="2"/>
+            <!-- Gold sparks -->
+            <circle cx="25" cy="70" r="2" fill="rgba(201,168,76,0.5)"/>
+            <circle cx="178" cy="65" r="2.5" fill="rgba(201,168,76,0.4)"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display text-offwhite text-2xl tracking-wide mb-1">WESTERN HOT DOG</h3>
+          <p class="text-offwhite/40 text-xs font-serif mb-4" data-uz="Klassik Amerika uslubida hot dog" data-ru="Хот-дог в классическом американском стиле" data-en="Classic American-style hot dog">Klassik Amerika uslubida hot dog</p>
+          <div class="flex items-center justify-between">
+            <div class="price text-gold text-2xl">22 000 <span class="text-gold/60 text-sm">so'm</span></div>
+            <button class="w-8 h-8 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold/10 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Fries -->
+      <div class="menu-card rounded-2xl overflow-hidden reveal delay-2">
+        <div class="img-wrap h-48 flex items-center justify-center p-4 relative">
+          <svg viewBox="0 0 200 170" class="w-full h-full" fill="none">
+            <!-- Fry box -->
+            <path d="M65 110 L70 160 L130 160 L135 110 Z" fill="#E74C3C"/>
+            <path d="M65 110 L70 160 L130 160 L135 110 Z" fill="#C0392B" opacity="0.5"/>
+            <!-- Box design -->
+            <path d="M75 125 L75 155 M100 120 L100 158 M125 125 L125 155" stroke="rgba(245,242,236,0.2)" stroke-width="1.5"/>
+            <rect x="65" y="108" width="70" height="14" rx="2" fill="#C0392B"/>
+            <text x="100" y="120" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="11" fill="rgba(245,242,236,0.7)">WEST</text>
+            <!-- Fries sticking up -->
+            <rect x="73" y="52" width="10" height="60" rx="4" fill="#F39C12"/>
+            <rect x="73" y="52" width="10" height="60" rx="4" fill="#E67E22" opacity="0.5"/>
+            <rect x="87" y="38" width="10" height="74" rx="4" fill="#F1C40F"/>
+            <rect x="101" y="44" width="10" height="68" rx="4" fill="#F39C12"/>
+            <rect x="115" y="34" width="10" height="78" rx="4" fill="#F1C40F"/>
+            <rect x="129" y="48" width="8" height="64" rx="3" fill="#F39C12"/>
+            <!-- Fry shadows -->
+            <rect x="73" y="52" width="10" height="10" rx="4" fill="rgba(0,0,0,0.15)"/>
+            <rect x="87" y="38" width="10" height="10" rx="4" fill="rgba(0,0,0,0.12)"/>
+            <rect x="101" y="44" width="10" height="10" rx="4" fill="rgba(0,0,0,0.12)"/>
+            <rect x="115" y="34" width="10" height="10" rx="4" fill="rgba(0,0,0,0.15)"/>
+            <!-- Salt sparkles -->
+            <circle cx="80" cy="42" r="1.5" fill="white" opacity="0.7"/>
+            <circle cx="105" cy="32" r="1.5" fill="white" opacity="0.6"/>
+            <circle cx="120" cy="45" r="1" fill="white" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display text-offwhite text-2xl tracking-wide mb-1">FRIES</h3>
+          <p class="text-offwhite/40 text-xs font-serif mb-4" data-uz="Qovurilgan kartoshka, tuzlangan" data-ru="Картофель фри с солью" data-en="Crispy salted french fries">Qovurilgan kartoshka, tuzlangan</p>
+          <div class="flex items-center justify-between">
+            <div class="price text-gold text-2xl">14 000 <span class="text-gold/60 text-sm">so'm</span></div>
+            <button class="w-8 h-8 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold/10 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Nuggets -->
+      <div class="menu-card rounded-2xl overflow-hidden reveal delay-3">
+        <div class="img-wrap h-48 flex items-center justify-center p-4 relative">
+          <svg viewBox="0 0 200 160" class="w-full h-full" fill="none">
+            <!-- 6 nuggets arranged -->
+            <!-- Nugget 1 -->
+            <ellipse cx="65" cy="60" rx="32" ry="22" fill="#D4901A" transform="rotate(-15 65 60)"/>
+            <ellipse cx="65" cy="58" rx="28" ry="18" fill="#E8A820" transform="rotate(-15 65 58)"/>
+            <path d="M42 52 Q55 44 78 52" stroke="rgba(0,0,0,0.15)" stroke-width="2.5" fill="none" transform="rotate(-15 65 60)"/>
+            <!-- Nugget 2 -->
+            <ellipse cx="115" cy="52" rx="34" ry="22" fill="#C4820F" transform="rotate(10 115 52)"/>
+            <ellipse cx="115" cy="50" rx="30" ry="18" fill="#D4901A" transform="rotate(10 115 50)"/>
+            <!-- Nugget 3 -->
+            <ellipse cx="155" cy="72" rx="30" ry="20" fill="#D4901A" transform="rotate(25 155 72)"/>
+            <ellipse cx="155" cy="70" rx="26" ry="17" fill="#E8A820" transform="rotate(25 155 70)"/>
+            <!-- Nugget 4 -->
+            <ellipse cx="52" cy="110" rx="32" ry="20" fill="#C4820F" transform="rotate(20 52 110)"/>
+            <ellipse cx="52" cy="108" rx="28" ry="16" fill="#D4901A" transform="rotate(20 52 108)"/>
+            <!-- Nugget 5 -->
+            <ellipse cx="110" cy="118" rx="35" ry="22" fill="#D4901A" transform="rotate(-10 110 118)"/>
+            <ellipse cx="110" cy="116" rx="31" ry="18" fill="#E8A820" transform="rotate(-10 110 116)"/>
+            <!-- Nugget 6 -->
+            <ellipse cx="160" cy="108" rx="28" ry="19" fill="#C4820F" transform="rotate(15 160 108)"/>
+            <ellipse cx="160" cy="106" rx="24" ry="15" fill="#D4901A" transform="rotate(15 160 106)"/>
+            <!-- Crumb texture dots -->
+            <circle cx="65" cy="56" r="2" fill="rgba(0,0,0,0.15)"/>
+            <circle cx="72" cy="62" r="1.5" fill="rgba(0,0,0,0.12)"/>
+            <circle cx="115" cy="48" r="2" fill="rgba(0,0,0,0.15)"/>
+            <circle cx="110" cy="114" r="2" fill="rgba(0,0,0,0.1)"/>
+            <!-- Gold badge x6 -->
+            <circle cx="28" cy="28" r="18" fill="rgba(201,168,76,0.12)" stroke="rgba(201,168,76,0.45)" stroke-width="1.5"/>
+            <text x="28" y="34" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="14" fill="#C9A84C">6pc</text>
+          </svg>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display text-offwhite text-2xl tracking-wide mb-1">NUGGETS</h3>
+          <p class="text-offwhite/40 text-xs font-serif mb-4" data-uz="6 ta tovuq naggesi, sous bilan" data-ru="6 куриных наггетсов с соусом" data-en="6 crispy chicken nuggets with sauce">6 ta tovuq naggesi, sous bilan</p>
+          <div class="flex items-center justify-between">
+            <div class="price text-gold text-2xl">25 000 <span class="text-gold/60 text-sm">so'm</span></div>
+            <button class="w-8 h-8 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold/10 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Philly Classic -->
+      <div class="menu-card rounded-2xl overflow-hidden reveal delay-4">
+        <div class="img-wrap h-48 flex items-center justify-center p-4 relative">
+          <svg viewBox="0 0 200 170" class="w-full h-full" fill="none">
+            <!-- Sub roll -->
+            <path d="M25 85 Q25 50 100 38 Q175 50 175 85 Q175 110 100 118 Q25 110 25 85Z" fill="#D4A062"/>
+            <path d="M25 88 Q25 58 100 46 Q175 58 175 88" stroke="#B8862E" stroke-width="2.5" fill="none"/>
+            <!-- Filling -->
+            <ellipse cx="100" cy="86" rx="68" ry="12" fill="#5C2E0E"/>
+            <ellipse cx="100" cy="80" rx="65" ry="10" fill="#6B3510"/>
+            <!-- Steak strips -->
+            <path d="M35 78 Q60 70 85 78 Q100 72 115 78 Q140 70 165 78" stroke="#8B4513" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <path d="M38 86 Q63 78 88 86 Q103 80 118 86 Q143 78 162 86" stroke="#A0522D" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <!-- Melted cheese -->
+            <path d="M35 74 Q60 62 85 70 Q100 64 115 70 Q140 62 165 74" fill="#F39C12" opacity="0.8"/>
+            <!-- Peppers -->
+            <ellipse cx="65" cy="74" rx="10" ry="5" fill="#27AE60" transform="rotate(-15 65 74)"/>
+            <ellipse cx="100" cy="68" rx="10" ry="5" fill="#E74C3C" transform="rotate(5 100 68)"/>
+            <ellipse cx="135" cy="73" rx="9" ry="4.5" fill="#27AE60" transform="rotate(20 135 73)"/>
+            <!-- Onions -->
+            <path d="M50 80 Q58 72 66 80" stroke="rgba(245,242,236,0.5)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M130 78 Q138 70 146 78" stroke="rgba(245,242,236,0.4)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <!-- Bottom roll -->
+            <ellipse cx="100" cy="110" rx="70" ry="14" fill="#C47A2F"/>
+            <!-- Seeds on top -->
+            <ellipse cx="75" cy="52" rx="8" ry="3.5" fill="#D4A574" transform="rotate(-20 75 52)"/>
+            <ellipse cx="105" cy="44" rx="8" ry="3.5" fill="#D4A574"/>
+            <ellipse cx="130" cy="52" rx="7" ry="3" fill="#D4A574" transform="rotate(15 130 52)"/>
+          </svg>
+          <div class="absolute top-3 right-3 badge" data-uz="Maxsus" data-ru="Особый" data-en="Special">Maxsus</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display text-offwhite text-2xl tracking-wide mb-1">PHILLY CLASSIC</h3>
+          <p class="text-offwhite/40 text-xs font-serif mb-4" data-uz="Filadelfiya uslubida go'shtli sandvich" data-ru="Сэндвич в стиле Филадельфии" data-en="Philadelphia-style cheesesteak sandwich">Filadelfiya uslubida go'shtli sandvich</p>
+          <div class="flex items-center justify-between">
+            <div class="price text-gold text-2xl">45 000 <span class="text-gold/60 text-sm">so'm</span></div>
+            <button class="w-8 h-8 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold/10 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /grid -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FEATURES -->
+<section class="py-24 px-6 md:px-12" style="background: linear-gradient(135deg, #0f0d08 0%, #0A0A0A 100%);">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14 reveal">
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <div class="h-px w-16 bg-gold/40"></div>
+        <span class="section-label" data-uz="Afzalliklarimiz" data-ru="Наши преимущества" data-en="Why choose us">Afzalliklarimiz</span>
+        <div class="h-px w-16 bg-gold/40"></div>
+      </div>
+      <h2 class="font-display text-offwhite" style="font-size: clamp(2.5rem,5vw,4.5rem);"
+          data-uz="NIMA UCHUN WEST?" data-ru="ПОЧЕМУ WEST?" data-en="WHY CHOOSE WEST?">NIMA UCHUN WEST?</h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <!-- Fast service -->
+      <div class="feat-card text-center p-6 rounded-2xl border border-gold/10 hover:border-gold/25 transition-all reveal delay-1" style="background: rgba(201,168,76,0.02);">
+        <div class="feat-icon mx-auto mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="font-display text-offwhite text-xl tracking-wide mb-2" data-uz="TEZKOR XIZMAT" data-ru="БЫСТРО" data-en="FAST SERVICE">TEZKOR XIZMAT</h3>
+        <p class="text-offwhite/40 text-xs font-serif" data-uz="Buyurtmangiz 15 daqiqada tayyor" data-ru="Ваш заказ готов за 15 минут" data-en="Your order ready in 15 minutes">Buyurtmangiz 15 daqiqada tayyor</p>
+      </div>
+      <!-- Delivery -->
+      <div class="feat-card text-center p-6 rounded-2xl border border-gold/10 hover:border-gold/25 transition-all reveal delay-2" style="background: rgba(201,168,76,0.02);">
+        <div class="feat-icon mx-auto mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3 class="font-display text-offwhite text-xl tracking-wide mb-2" data-uz="YETKAZIB BERISH" data-ru="ДОСТАВКА" data-en="DELIVERY">YETKAZIB BERISH</h3>
+        <p class="text-offwhite/40 text-xs font-serif" data-uz="Toshkent bo'ylab yetkazib beramiz" data-ru="Доставляем по всему Ташкенту" data-en="We deliver across Tashkent">Toshkent bo'ylab yetkazib beramiz</p>
+      </div>
+      <!-- Takeaway -->
+      <div class="feat-card text-center p-6 rounded-2xl border border-gold/10 hover:border-gold/25 transition-all reveal delay-3" style="background: rgba(201,168,76,0.02);">
+        <div class="feat-icon mx-auto mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <h3 class="font-display text-offwhite text-xl tracking-wide mb-2" data-uz="OLIB KETISH" data-ru="НАВЫНОС" data-en="TAKEAWAY">OLIB KETISH</h3>
+        <p class="text-offwhite/40 text-xs font-serif" data-uz="Paketlab olish imkoniyati mavjud" data-ru="Возможность взять с собой" data-en="Option to take your order to go">Paketlab olish imkoniyati mavjud</p>
+      </div>
+      <!-- Kid-friendly -->
+      <div class="feat-card text-center p-6 rounded-2xl border border-gold/10 hover:border-gold/25 transition-all reveal delay-4" style="background: rgba(201,168,76,0.02);">
+        <div class="feat-icon mx-auto mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3 class="font-display text-offwhite text-xl tracking-wide mb-2" data-uz="BOLALAR UCHUN" data-ru="ДЛЯ ДЕТЕЙ" data-en="KID-FRIENDLY">BOLALAR UCHUN</h3>
+        <p class="text-offwhite/40 text-xs font-serif" data-uz="Bolalar menyusi va qulay muhit" data-ru="Детское меню и уютная атмосфера" data-en="Kids menu and welcoming atmosphere">Bolalar menyusi va qulay muhit</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ REVIEWS -->
+<section id="reviews" class="py-28 px-6 md:px-12 relative overflow-hidden">
+  <div class="float-num right-0" style="bottom: 40px; right: -20px; opacity:0.025">03</div>
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <div class="h-px w-16 bg-gold/40"></div>
+        <span class="section-label" data-uz="Mijozlar fikri" data-ru="Отзывы клиентов" data-en="Customer reviews">Mijozlar fikri</span>
+        <div class="h-px w-16 bg-gold/40"></div>
+      </div>
+      <h2 class="font-display text-offwhite mb-4" style="font-size: clamp(2.5rem,5vw,4.5rem);"
+          data-uz="MIJOZLARIMIZ NIMA DEYDI?" data-ru="ЧТО ГОВОРЯТ КЛИЕНТЫ?" data-en="WHAT CLIENTS SAY?">MIJOZLARIMIZ NIMA DEYDI?</h2>
+      <!-- Overall rating -->
+      <div class="inline-flex items-center gap-4 bg-gold/8 border border-gold/20 rounded-2xl px-8 py-4 mt-4">
+        <span class="font-display text-gold text-5xl leading-none">4.7</span>
+        <div class="text-left">
+          <div class="flex gap-1 mb-1">
+            <span class="star text-xl">★</span><span class="star text-xl">★</span><span class="star text-xl">★</span><span class="star text-xl">★</span><span class="star text-xl" style="opacity:0.6">★</span>
+          </div>
+          <div class="text-offwhite/50 text-sm" data-uz="319 ta sharh asosida" data-ru="На основе 319 отзывов" data-en="Based on 319 reviews">319 ta sharh asosida</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Review 1 -->
+      <div class="review-card rounded-2xl p-6 reveal delay-1">
+        <div class="flex gap-1 mb-4">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="font-serif text-offwhite/70 text-base leading-relaxed mb-6 italic"
+           data-uz='"Toshkentda yegan eng mazali burgeri! West Trio ni albatta sinab ko'ring — 3 ta mazali burger bir paket ichida. Muhit ham juda yoqimli, yana boraman."'
+           data-ru='"Лучший бургер в Ташкенте! Обязательно попробуйте West Trio — три вкуснейших бургера в одном наборе. Атмосфера очень приятная, обязательно вернусь."'
+           data-en='"Best burger I have had in Tashkent! Definitely try the West Trio — three delicious burgers in one set. Very pleasant atmosphere, I will be back."'>
+          "Toshkentda yegan eng mazali burgeri! West Trio ni albatta sinab ko'ring — 3 ta mazali burger bir paket ichida. Muhit ham juda yoqimli, yana boraman."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gold/20 border border-gold/30 flex items-center justify-center">
+            <span class="font-display text-gold text-lg">A</span>
+          </div>
+          <div>
+            <div class="text-offwhite font-medium text-sm">Aziz Karimov</div>
+            <div class="text-offwhite/35 text-xs" data-uz="1 oy oldin" data-ru="1 месяц назад" data-en="1 month ago">1 oy oldin</div>
+          </div>
+          <div class="ml-auto">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1.5"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-card rounded-2xl p-6 reveal delay-2">
+        <div class="flex gap-1 mb-4">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="font-serif text-offwhite/70 text-base leading-relaxed mb-6 italic"
+           data-uz='"Oilam bilan keldik. Bolalar uchun ham yoqimli muhit, xizmat tezkor. Philly Classic va Cheddar Burger — zo'r tanlov! Narxi ham adolatli."'
+           data-ru='"Пришли всей семьёй. Атмосфера приятная и для детей, сервис быстрый. Philly Classic и Cheddar Burger — отличный выбор! Цены справедливые."'
+           data-en='"Came with the whole family. Great atmosphere for kids too, service is fast. Philly Classic and Cheddar Burger — excellent choices! Fair prices."'>
+          "Oilam bilan keldik. Bolalar uchun ham yoqimli muhit, xizmat tezkor. Philly Classic va Cheddar Burger — zo'r tanlov! Narxi ham adolatli."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gold/20 border border-gold/30 flex items-center justify-center">
+            <span class="font-display text-gold text-lg">M</span>
+          </div>
+          <div>
+            <div class="text-offwhite font-medium text-sm">Madina Yusupova</div>
+            <div class="text-offwhite/35 text-xs" data-uz="2 hafta oldin" data-ru="2 недели назад" data-en="2 weeks ago">2 hafta oldin</div>
+          </div>
+          <div class="ml-auto">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1.5"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="review-card rounded-2xl p-6 reveal delay-3">
+        <div class="flex gap-1 mb-4">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="opacity:0.5">★</span>
+        </div>
+        <p class="font-serif text-offwhite/70 text-base leading-relaxed mb-6 italic"
+           data-uz='"Toshkentda yashagan barcha yillarim ichida West eng sevimli yerim bo'lib qoldi. Western Hot Dog va Fries kombinatsiyasi — klassik! Har hafta kelaman."'
+           data-ru='"За все годы жизни в Ташкенте West стал моим любимым местом. Комбо Western Hot Dog с Fries — классика! Прихожу каждую неделю."'
+           data-en='"In all my years in Tashkent, West has become my favorite spot. The Western Hot Dog and Fries combo is a classic! I come every week."'>
+          "Toshkentda yashagan barcha yillarim ichida West eng sevimli yerim bo'lib qoldi. Western Hot Dog va Fries kombinatsiyasi — klassik! Har hafta kelaman."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gold/20 border border-gold/30 flex items-center justify-center">
+            <span class="font-display text-gold text-lg">J</span>
+          </div>
+          <div>
+            <div class="text-offwhite font-medium text-sm">Jasur Toshmatov</div>
+            <div class="text-offwhite/35 text-xs" data-uz="3 kun oldin" data-ru="3 дня назад" data-en="3 days ago">3 kun oldin</div>
+          </div>
+          <div class="ml-auto">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1.5"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ CTA -->
+<section class="cta-section py-28 px-6 md:px-12 relative">
+  <div class="max-w-4xl mx-auto text-center relative z-10 reveal">
+    <div class="flex items-center justify-center gap-4 mb-6">
+      <div class="h-px w-16 bg-gold/40"></div>
+      <span class="section-label" data-uz="Bugun tashrif buyuring" data-ru="Посетите нас сегодня" data-en="Visit us today">Bugun tashrif buyuring</span>
+      <div class="h-px w-16 bg-gold/40"></div>
+    </div>
+    <h2 class="font-display text-offwhite leading-none mb-6" style="font-size: clamp(3rem, 7vw, 6rem);">
+      <span class="gold-text" data-uz="HOZIROQ" data-ru="ЗАКАЖИТЕ" data-en="ORDER">HOZIROQ</span><br>
+      <span data-uz="BUYURTMA BERING" data-ru="ПРЯМО СЕЙЧАС" data-en="RIGHT NOW">BUYURTMA BERING</span>
+    </h2>
+    <p class="font-serif text-offwhite/60 text-xl leading-relaxed mb-10 max-w-xl mx-auto"
+       data-uz="Yetkazib berish yoki olib ketish — tanlash sizga bog'liq. Biz doim tayyor!"
+       data-ru="Доставка или самовывоз — выбор за вами. Мы всегда готовы!"
+       data-en="Delivery or takeaway — the choice is yours. We are always ready!">
+      Yetkazib berish yoki olib ketish — tanlash sizga bog'liq. Biz doim tayyor!
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="tel:+998938870000" class="btn-gold px-10 py-5 rounded-xl text-base flex items-center justify-center gap-3">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="relative z-10"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        <span data-uz="+998 93 887 00 00" data-ru="+998 93 887 00 00" data-en="+998 93 887 00 00">+998 93 887 00 00</span>
+      </a>
+      <a href="https://maps.google.com/?q=Mirabad+Street+21/2+Tashkent" target="_blank" rel="noopener" class="btn-outline px-10 py-5 rounded-xl text-base flex items-center justify-center gap-3">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span data-uz="Bizni toping" data-ru="Найти нас" data-en="Find Us">Bizni toping</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ CONTACT -->
+<section id="contact" class="py-28 px-6 md:px-12" style="background: #0f0d08;">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <div class="h-px w-16 bg-gold/40"></div>
+        <span class="section-label" data-uz="Qayerda joylashganmiz" data-ru="Где мы находимся" data-en="Where we are">Qayerda joylashganmiz</span>
+        <div class="h-px w-16 bg-gold/40"></div>
+      </div>
+      <h2 class="font-display text-offwhite" style="font-size: clamp(2.5rem,5vw,4.5rem);"
+          data-uz="MANZIL VA ALOQA" data-ru="АДРЕС И КОНТАКТЫ" data-en="LOCATION & CONTACT">MANZIL VA ALOQA</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <!-- Info cards -->
+      <div class="space-y-5 reveal-left">
+        <!-- Address -->
+        <div class="flex gap-4 p-5 rounded-2xl border border-gold/15" style="background: rgba(201,168,76,0.03);">
+          <div class="feat-icon flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="section-label mb-1" data-uz="Manzil" data-ru="Адрес" data-en="Address">Manzil</div>
+            <div class="text-offwhite font-medium">Mirabad ko'chasi, 21/2</div>
+            <div class="text-offwhite/50 text-sm font-serif">Toshkent, Uzbekistan</div>
+          </div>
+        </div>
+        <!-- Phone -->
+        <div class="flex gap-4 p-5 rounded-2xl border border-gold/15" style="background: rgba(201,168,76,0.03);">
+          <div class="feat-icon flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          </div>
+          <div>
+            <div class="section-label mb-1" data-uz="Telefon" data-ru="Телефон" data-en="Phone">Telefon</div>
+            <a href="tel:+998938870000" class="text-offwhite font-medium hover:text-gold transition-colors">+998 93 887 00 00</a>
+          </div>
+        </div>
+        <!-- Hours -->
+        <div class="flex gap-4 p-5 rounded-2xl border border-gold/15" style="background: rgba(201,168,76,0.03);">
+          <div class="feat-icon flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="section-label mb-1" data-uz="Ish vaqti" data-ru="Режим работы" data-en="Working hours">Ish vaqti</div>
+            <div class="text-offwhite font-medium" data-uz="10:00 — 23:00" data-ru="10:00 — 23:00" data-en="10:00 AM — 11:00 PM">10:00 — 23:00</div>
+            <div class="text-offwhite/50 text-sm font-serif" data-uz="Har kuni" data-ru="Ежедневно" data-en="Every day">Har kuni</div>
+          </div>
+        </div>
+        <!-- Social -->
+        <div class="p-5 rounded-2xl border border-gold/15" style="background: rgba(201,168,76,0.03);">
+          <div class="section-label mb-3" data-uz="Ijtimoiy tarmoqlar" data-ru="Социальные сети" data-en="Social media">Ijtimoiy tarmoqlar</div>
+          <div class="flex gap-3">
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Telegram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21.198 2.433a2.242 2.242 0 00-1.022.215l-16.5 6.866a2.012 2.012 0 00.06 3.757l3.63 1.323 1.98 6.028a.5.5 0 00.892.161l2.72-3.12 4.15 3.237a.5.5 0 00.795-.34l2.72-17.11a.497.497 0 00-.425-.617z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="TikTok">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="reveal-right">
+        <div class="map-wrap" style="height: 420px;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.4383826167327!2d69.28!3d41.30!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE4JzAwLjAiTiA2OcKwMTYnNDguMCJF!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
+            width="100%"
+            height="100%"
+            style="border:0; filter: invert(90%) hue-rotate(180deg) saturate(0.8);"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="West Restaurant location"
+            aria-label="Google Maps showing West Restaurant location on Mirabad Street 21/2, Tashkent">
+          </iframe>
+        </div>
+        <div class="mt-4 p-4 rounded-xl border border-gold/15 flex items-center gap-3" style="background: rgba(201,168,76,0.03);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="text-offwhite/60 text-sm font-serif">Mirabad ko'chasi, 21/2, Toshkent, Uzbekistan</span>
+          <a href="https://maps.google.com/?q=Mirabad+Street+21/2+Tashkent" target="_blank" rel="noopener" class="ml-auto text-gold text-xs uppercase tracking-wider hover:underline transition-all flex-shrink-0"
+             data-uz="Yo'nalish" data-ru="Маршрут" data-en="Directions">Yo'nalish</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FOOTER -->
+<footer class="py-12 px-6 md:px-12 border-t border-gold/15">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-gold rounded-lg flex items-center justify-center">
+            <span class="font-display text-charcoal text-xl leading-none">W</span>
+          </div>
+          <div>
+            <span class="font-display text-offwhite text-2xl tracking-wider leading-none block">WEST</span>
+            <span class="text-gold text-xs tracking-widest uppercase leading-none" style="font-size:0.55rem">Restaurant</span>
+          </div>
+        </div>
+        <p class="text-offwhite/40 text-sm font-serif leading-relaxed max-w-xs"
+           data-uz="Toshkentdagi eng mazali burgerlar — faqat West Restaurant'da."
+           data-ru="Лучшие бургеры Ташкента — только в West Restaurant."
+           data-en="The best burgers in Tashkent — only at West Restaurant.">
+          Toshkentdagi eng mazali burgerlar — faqat West Restaurant'da.
+        </p>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <h4 class="font-display text-offwhite text-lg tracking-wide mb-4" data-uz="TEZKOR HAVOLALAR" data-ru="БЫСТРЫЕ ССЫЛКИ" data-en="QUICK LINKS">TEZKOR HAVOLALAR</h4>
+        <div class="space-y-2">
+          <a href="#about" class="block text-offwhite/45 text-sm font-serif hover:text-gold transition-colors" data-uz="Haqimizda" data-ru="О нас" data-en="About">Haqimizda</a>
+          <a href="#menu" class="block text-offwhite/45 text-sm font-serif hover:text-gold transition-colors" data-uz="Menyu" data-ru="Меню" data-en="Menu">Menyu</a>
+          <a href="#reviews" class="block text-offwhite/45 text-sm font-serif hover:text-gold transition-colors" data-uz="Sharhlar" data-ru="Отзывы" data-en="Reviews">Sharhlar</a>
+          <a href="#contact" class="block text-offwhite/45 text-sm font-serif hover:text-gold transition-colors" data-uz="Aloqa" data-ru="Контакты" data-en="Contact">Aloqa</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-display text-offwhite text-lg tracking-wide mb-4" data-uz="BOG'LANISH" data-ru="КОНТАКТЫ" data-en="CONTACT">BOG'LANISH</h4>
+        <div class="space-y-2 text-offwhite/45 text-sm font-serif">
+          <div>Mirabad ko'chasi, 21/2</div>
+          <div>Toshkent, Uzbekistan</div>
+          <a href="tel:+998938870000" class="block hover:text-gold transition-colors mt-3">+998 93 887 00 00</a>
+        </div>
+        <div class="flex gap-3 mt-5">
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Telegram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21.198 2.433a2.242 2.242 0 00-1.022.215l-16.5 6.866a2.012 2.012 0 00.06 3.757l3.63 1.323 1.98 6.028a.5.5 0 00.892.161l2.72-3.12 4.15 3.237a.5.5 0 00.795-.34l2.72-17.11a.497.497 0 00-.425-.617z"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="TikTok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="gold-line mb-6"></div>
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-offwhite/25 text-xs font-serif">
+        © 2025 West Restaurant. <span data-uz="Barcha huquqlar himoyalangan." data-ru="Все права защищены." data-en="All rights reserved.">Barcha huquqlar himoyalangan.</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-offwhite/20 text-xs font-serif" data-uz="Til:" data-ru="Язык:" data-en="Language:">Til:</span>
+        <button class="lang-btn active text-xs" onclick="setLang('uz')">UZ</button>
+        <span class="lang-sep text-xs">|</span>
+        <button class="lang-btn text-xs" onclick="setLang('ru')">RU</button>
+        <span class="lang-sep text-xs">|</span>
+        <button class="lang-btn text-xs" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Scroll observer for reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+  // ── Sticky nav
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── Mobile menu
+  function toggleMobile() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+  }
+
+  // ── Language switcher
+  let currentLang = 'uz';
+  function setLang(lang) {
+    currentLang = lang;
+    // Update all elements with data attributes
+    document.querySelectorAll('[data-uz], [data-ru], [data-en]').forEach(el => {
+      const txt = el.getAttribute('data-' + lang);
+      if (txt) el.textContent = txt;
+    });
+    // Update active state on lang buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      const btnLang = btn.textContent.toLowerCase().trim();
+      btn.classList.toggle('active', btnLang === lang);
+    });
+    // Update html lang attribute
+    document.documentElement.lang = lang === 'uz' ? 'uz' : lang === 'ru' ? 'ru' : 'en';
+  }
+
+  // ── Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
